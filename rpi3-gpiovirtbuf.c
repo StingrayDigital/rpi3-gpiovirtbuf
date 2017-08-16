@@ -183,14 +183,18 @@ int main(int argc, char *argv[])
 		int output, active_low, term_en, pull_up;
 		int state = gpio_get(mb, val);
 
-		fprintf(stderr, "Get state of %d as %d\n", val, state);
+		if (strcmp(argv[1], "gg") == 0) {
+			fprintf(stderr, "%d\n", state);
+		} else {
+			fprintf(stderr, "Get state of %d as %d\n", val, state);
 
-		gpio_get_config(mb, val, &output, &active_low, &term_en, &pull_up);
-		fprintf(stderr, "get_config dir %s, active %s, %s\n",
-			output ? "output" : "input",
-			active_low ? "low (inverted)" : "high",
-			term_en ? (pull_up ? "pulled high" : "pulled low") : "not terminated"
-			);
+			gpio_get_config(mb, val, &output, &active_low, &term_en, &pull_up);
+			fprintf(stderr, "get_config dir %s, active %s, %s\n",
+				output ? "output" : "input",
+				active_low ? "low (inverted)" : "high",
+				term_en ? (pull_up ? "pulled high" : "pulled low") : "not terminated"
+				);
+		}
 	}
 	else
 	{
