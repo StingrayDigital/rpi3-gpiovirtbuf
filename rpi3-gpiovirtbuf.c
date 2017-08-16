@@ -184,7 +184,7 @@ int main(int argc, char *argv[])
 		int state = gpio_get(mb, val);
 
 		if (strcmp(argv[1], "gg") == 0) {
-			fprintf(stderr, "%d\n", state);
+			fprintf(stdout, "%d\n", state);
 		} else {
 			fprintf(stderr, "Get state of %d as %d\n", val, state);
 
